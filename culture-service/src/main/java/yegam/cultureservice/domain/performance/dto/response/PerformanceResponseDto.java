@@ -10,11 +10,14 @@ import java.time.LocalDate;
 @Builder
 public class PerformanceResponseDto {
   private Long id;
+  private String mt20id;
   private String title;
   private String category;
-  private String local;
+  private String area;
+  private String placeName;
   private LocalDate startDate;
   private LocalDate endDate;
+  private String state;
   private String posterUrl;
   private Double avgRating;
   private Integer reviewCount;
