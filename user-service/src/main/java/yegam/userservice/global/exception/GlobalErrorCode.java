@@ -17,9 +17,16 @@ public enum GlobalErrorCode implements BaseErrorCode {
   INVALID_JSON_FORMAT("GLOBAL005", "JSON 형식이 잘못되었습니다.", HttpStatus.BAD_REQUEST),
   URL_NOT_FOUND("GLOBAL006", "요청한 URL은 존재하지 않습니다.", HttpStatus.NOT_FOUND),
 
+  // 인증 관련 공통 예외 추가
+  UNAUTHORIZED("GLOBAL007", "로그인이 필요합니다.", HttpStatus.UNAUTHORIZED),
+  FORBIDDEN("GLOBAL008", "접근 권한이 없습니다.", HttpStatus.FORBIDDEN),
+
+
   // JWT 관련 예외
   JWT_EXPIRED("JWT001", "JWT 토큰이 만료되었습니다.", HttpStatus.UNAUTHORIZED),
   JWT_INVALID("JWT002", "유효하지 않은 JWT 토큰입니다.", HttpStatus.UNAUTHORIZED);
+
+
 
   private final String code;
   private final String message;

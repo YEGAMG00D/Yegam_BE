@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.UUID;
+import yegam.userservice.global.common.BaseTimeEntity;
 
 @Entity
 @Table(
@@ -24,7 +25,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,13 +60,6 @@ public class User {
   @Column(nullable = false)
   private Role role = Role.USER;
 
-  @CreationTimestamp
-  @Column(updatable = false)
-  private LocalDateTime createdAt;
-
-  @UpdateTimestamp
-  private LocalDateTime updatedAt;
-
   @Column(nullable = false)
   private Boolean isDeleted = false;
 
@@ -75,6 +69,18 @@ public class User {
   private String uuid = UUID.randomUUID().toString();
 
 
+  @PrePersist
+  public void prePersist() {
+    if (uuid == null) {
+      uuid = UUID.randomUUID().toString();
+    }
+    if (role == null) {
+      role = Role.USER;
+    }
+    if (isDeleted == null) {
+      isDeleted = false;
+    }
+  }
 
   public enum Role {
     USER,

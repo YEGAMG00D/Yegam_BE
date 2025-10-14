@@ -17,8 +17,4 @@ public class UserResponseDto {
   private String nickname;
   private String name;
   private LocalDate birth;
-  private User.Role role;
-  private Boolean isDeleted;
-  private LocalDateTime createdAt;
-  private LocalDateTime updatedAt;
 }

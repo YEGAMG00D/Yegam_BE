@@ -60,17 +60,13 @@ public class SecurityConfig {
     return http.build();
   }
 
-  /**
-   * 비밀번호 인코더 Bean 등록
-   **/
+  /* 비밀번호 인코더 Bean 등록 */
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
-  /**
-   * 인증 관리자 Bean 등록
-   **/
+  /* 인증 관리자 Bean 등록 */
   @Bean
   public AuthenticationManager authenticationManager(
       AuthenticationConfiguration authenticationConfiguration) throws Exception {
