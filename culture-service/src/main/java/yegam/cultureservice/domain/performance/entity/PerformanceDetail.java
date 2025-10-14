@@ -76,9 +76,4 @@ public class PerformanceDetail extends BaseTimeEntity {
   @Column(name = "festival")
   private String festival; // 축제 여부 (Y/N)
 
-  @Column(name = "created_at", updatable = false)
-  private LocalDateTime createdAt;
-
-  @Column(name = "updated_at")
-  private LocalDateTime updatedAt;
 }
