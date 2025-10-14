@@ -3,7 +3,7 @@ package yegam.placeservice.domain.placeReview.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
-import yegam.placeservice.domain.place.entity.Place;
+import yegam.placeservice.domain.place.entity.PlaceSummary;
 
 @Entity
 @Table(name = "place_reviews")
@@ -23,7 +23,7 @@ public class PlaceReview {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "place_id", nullable = false)
-  private Place place;
+  private PlaceSummary place;
 
   @Column(nullable = false, columnDefinition = "TEXT")
   private String contents;
