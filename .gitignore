@@ -1,0 +1,23 @@
+# IntelliJ IDEA
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+.idea/
+*.iml
+
+# Build
+/target/
+/build/
+
+# Logs
+*.log
+
+# Environment / Secret Files
+.env
+application.properties
+application.yml
+application-*.properties
+application-*.yml
+!application-sample.yml   # 샘플 설정은 허용
