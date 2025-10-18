@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: place-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/yegam_place?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # ?? ??? update / ?? ??? validate ??
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  jwt:
+    secret: bXlzdXBlcnNlY3JldGtleW15c3VwZXJzZWNyZXRrZXltYXN0YmVhdXRpZnVsIQ==
+    access-token-expire-time: 1800000       # 30?
+    refresh-token-expire-time: 604800000    # 7?
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+server:
+  port: 8083
+
+cors:
+  allowed-origins: "http://localhost:5173"
+  allowed-methods: "GET,POST,PUT,PATCH,DELETE,OPTIONS"
+  allowed-headers: "*"
+  allow-credentials: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    display-request-duration: true
