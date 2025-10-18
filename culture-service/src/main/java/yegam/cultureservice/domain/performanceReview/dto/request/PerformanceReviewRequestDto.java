@@ -10,13 +10,15 @@ import jakarta.validation.constraints.*;
 @Builder
 public class PerformanceReviewRequestDto {
 
-  @NotNull(message = "회원 ID는 필수입니다.")
-  private Long userId;
+  @NotBlank(message = "제목을 입력해주세요.")
+  private String title;
 
-  @NotBlank(message = "후기 내용을 입력해주세요.")
+  @NotBlank(message = "내용을 입력해주세요.")
   private String content;
 
+  @NotNull(message = "평점을 입력해주세요.")
   @Min(1)
   @Max(5)
   private Integer rating;
+
 }

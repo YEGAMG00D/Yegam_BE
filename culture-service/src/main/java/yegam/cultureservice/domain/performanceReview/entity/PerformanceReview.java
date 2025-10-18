@@ -3,9 +3,9 @@ package yegam.cultureservice.domain.performanceReview.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
+import yegam.cultureservice.global.common.BaseTimeEntity;
 
 @Entity
 @Table(
@@ -20,7 +20,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PerformanceReview {
+public class PerformanceReview extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,28 +28,37 @@ public class PerformanceReview {
   private Long id;
 
   @Column(nullable = false)
-  private Long userId;
+  private Long userId;  // 작성자 (User-service 연동 예정)
+
+  @Column(nullable = false)
+  private Long performanceId; // PerformanceSummary 외래키
+
+  @Column(nullable = false, length = 100)
+  private String title; // 후기 제목
 
   @Lob
   @Column(nullable = false)
-  private String content;
+  private String content; // 후기 내용
 
   @Column(nullable = false)
-  private Integer rating;
-
-  private Integer likeCount = 0;
-
-  @CreationTimestamp
-  private LocalDateTime createdAt;
+  private Integer rating; // 평점 (1~5)
 
   @Column(nullable = false)
-  private Long performanceId;
+  private Integer likeCount = 0; // 좋아요 수
+
+
+  private LocalDateTime deletedAt;
 
   @Column(nullable = false)
   private Boolean isDeleted = false;
 
-  private LocalDateTime deletedAt;
-
   @Column(nullable = false, unique = true, length = 36)
   private String uuid = UUID.randomUUID().toString();
+
+
+  @PrePersist
+  public void prePersist() {
+    if (uuid == null) uuid = UUID.randomUUID().toString();
+  }
+
 }
