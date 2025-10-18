@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 import yegam.placeservice.domain.place.entity.PlaceSummary;
+import yegam.placeservice.global.common.BaseTimeEntity;
 
 @Entity
 @Table(name = "place_reviews")
@@ -12,14 +13,14 @@ import yegam.placeservice.domain.place.entity.PlaceSummary;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PlaceReview {
+public class PlaceReview extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long placeReviewId;
 
   @Column(nullable = false)
-  private Long userId; // FK (User-service 연동 시 외부참조)
+  private Long userId;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "place_id", nullable = false)
@@ -31,7 +32,6 @@ public class PlaceReview {
   @Column(nullable = false)
   private Integer rating;
 
-  private LocalDateTime createdAt;
   private Boolean isDeleted = false;
   private LocalDateTime deletedAt;
 }
