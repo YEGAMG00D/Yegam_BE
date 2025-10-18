@@ -1,7 +1,6 @@
 package yegam.cultureservice.domain.performanceReviewLike.dto.request;
 
 import lombok.*;
-import jakarta.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -9,6 +8,5 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 @Builder
 public class PerformanceReviewLikeRequestDto {
-  @NotNull(message = "회원 ID는 필수입니다.")
-  private Long userId;
+  private Long reviewId; // 좋아요 누를 후기 ID
 }

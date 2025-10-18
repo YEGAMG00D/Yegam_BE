@@ -11,8 +11,11 @@ import java.time.LocalDateTime;
 public class PerformanceReviewResponseDto {
   private Long reviewId;
   private Long userId;
+  private Long performanceId;
+  private String title;
   private String content;
   private Integer rating;
   private Integer likeCount;
   private LocalDateTime createdAt;
 }
+

@@ -19,7 +19,11 @@ public enum GlobalErrorCode implements BaseErrorCode {
 
   // JWT 관련 예외
   JWT_EXPIRED("JWT001", "JWT 토큰이 만료되었습니다.", HttpStatus.UNAUTHORIZED),
-  JWT_INVALID("JWT002", "유효하지 않은 JWT 토큰입니다.", HttpStatus.UNAUTHORIZED);
+  JWT_INVALID("JWT002", "유효하지 않은 JWT 토큰입니다.", HttpStatus.UNAUTHORIZED),
+  UNAUTHORIZED_ACCESS("JWT003", "로그인이 필요합니다.", HttpStatus.FORBIDDEN),
+
+  // 👇 여기 추가!
+  ACCESS_DENIED("AUTH001", "접근 권한이 없습니다.", HttpStatus.FORBIDDEN);
 
   private final String code;
   private final String message;
