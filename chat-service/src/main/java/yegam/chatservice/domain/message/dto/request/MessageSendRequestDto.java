@@ -8,7 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class MessageSendRequestDto {
-  private Long roomId;
-  private Long userId;
-  private String content;
+  private Long roomId;    // 채팅방 ID
+  private String content; // 메시지 내용
 }
