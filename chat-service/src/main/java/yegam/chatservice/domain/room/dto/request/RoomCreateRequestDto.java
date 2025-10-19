@@ -8,5 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class RoomCreateRequestDto {
-  private Long performanceId;
+  private Long performanceId; // 공연 id
 }

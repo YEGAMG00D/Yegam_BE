@@ -1,9 +1,11 @@
 package yegam.chatservice.domain.message.entity;
 
 import jakarta.persistence.*;
+import java.util.UUID;
 import lombok.*;
 import java.time.LocalDateTime;
 import yegam.chatservice.domain.room.entity.Room;
+import yegam.chatservice.global.common.BaseTimeEntity;
 
 @Entity
 @Table(name = "chat_messages")
@@ -12,7 +14,7 @@ import yegam.chatservice.domain.room.entity.Room;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Message {
+public class Message extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +26,6 @@ public class Message {
   @Column(columnDefinition = "TEXT", nullable = false)
   private String content;
 
-  @Column(name = "created_at")
-  private LocalDateTime createdAt;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "room_id", nullable = false)
@@ -39,4 +39,12 @@ public class Message {
 
   @Column(name = "uuid", unique = true)
   private String uuid;
+
+  @PrePersist
+  public void prePersist() {
+    if (uuid == null) uuid = UUID.randomUUID().toString();
+  }
+
+
+
 }
