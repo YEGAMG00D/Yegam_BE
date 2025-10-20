@@ -2,7 +2,7 @@ package yegam.favoriteservice.domain.performance.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
+import yegam.favoriteservice.global.common.BaseTimeEntity;
 
 @Entity
 @Table(name = "favorite_performances")
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Performance {
+public class PerformanceFavorite extends BaseTimeEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +24,7 @@ public class Performance {
   @Column(name = "performance_id", nullable = false)
   private Long performanceId;
 
-  @Column(name = "created_at")
-  private LocalDateTime createdAt;
-
-  @Column(name = "updated_at")
-  private LocalDateTime updatedAt;
+  /** 논리적 토글용 상태 컬럼 */
+  @Column(nullable = false)
+  private Boolean favorite = true;
 }

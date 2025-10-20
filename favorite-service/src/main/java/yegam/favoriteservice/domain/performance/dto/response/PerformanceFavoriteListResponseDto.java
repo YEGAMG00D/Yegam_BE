@@ -11,16 +11,5 @@ import java.util.List;
 @Builder
 public class PerformanceFavoriteListResponseDto {
   private Long userId;
-
-  @Builder
-  @Getter
-  @AllArgsConstructor
-  public static class FavoriteItem {
-    private Long performanceId;
-    private String title;
-    private String posterUrl;
-    private LocalDateTime createdAt;
-  }
-
-  private List<FavoriteItem> favorites;
+  private List<PerformanceFavoriteResponseDto> favorites;
 }

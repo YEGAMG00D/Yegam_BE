@@ -1,5 +1,6 @@
 package yegam.favoriteservice.global.jwt;
 
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ public class JwtProvider {
     this.key = Keys.hmacShaKeyFor(keyBytes);
   }
 
-  // JWT 유효성 검증
+  /** JWT 유효성 검증 */
   public boolean validateToken(String token) {
     try {
       Jwts.parserBuilder()
@@ -37,17 +38,20 @@ public class JwtProvider {
     }
   }
 
-  // JWT 에서 사용자 ID 추출
-  public String extractUserId(String token) {
-    return Jwts.parserBuilder()
+  /** JWT에서 사용자 ID 추출 (subject 기준) */
+  public Long extractUserId(String token) {
+    Claims claims = Jwts.parserBuilder()
         .setSigningKey(key)
         .build()
         .parseClaimsJws(token)
-        .getBody()
-        .getSubject();
+        .getBody();
+
+    // subject가 문자열 형태로 저장되므로 Long으로 변환
+    String subject = claims.getSubject();
+    return Long.parseLong(subject);
   }
 
-  // JWT 에서 이메일 추출
+  /** JWT에서 이메일 추출 (선택사항) */
   public String extractEmail(String token) {
     return Jwts.parserBuilder()
         .setSigningKey(key)

@@ -1,5 +1,7 @@
 package yegam.favoriteservice.global.exception;
 
+
+
 import yegam.favoriteservice.global.exception.model.BaseErrorCode;
 import yegam.favoriteservice.global.response.BaseResponse;
 import java.util.stream.Collectors;
