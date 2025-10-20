@@ -35,7 +35,7 @@ public class SwaggerConfig {
                         .type(SecurityScheme.Type.HTTP)
                         .scheme("bearer")
                         .bearerFormat("JWT")))
-        .info(new Info().title("Swagger API 명세서").version("1.0").description("My Swagger"));
+        .info(new Info().title("Yegam: Favorite-service Swagger API 명세서").version("1.0").description("공연 정보 공유 플랫폼: 관심 관련 API"));
   }
 
   @Bean
